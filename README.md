@@ -49,20 +49,27 @@ That is definitely not possible with the current app version, but just to set a 
   the NLP model stored in the pickle file to make predictions about the category out of new disaster messages entered in the web app. 
   
 ## How to run everthing
-- Start the ETL proces 
+- Start the ETL process
 
   In folder DATA start the python script PROCESS_DATA.PY to create the Sqlite database.
+
   -- Switch to folder DATA 
+
   -- Execute *python process_data.py disaster_messages.csv disaster_categories.csv DB_disaster_Msg.db*
+
      Parameters: 
      1. Name of the messages csv file
      2. Name of the categories csv file
      3. Name of the Sqllite database
 
 - Start the ML process
+
   In folder MODEL start the python script TRAIN_CLASSIFIER.PY 
+
   -- Switch to folder MODEL
+
   -- Execute *python train_classifier.py DB_disaster_msg.db ML_disaster_msg.pkl*
+
      Parameters:
      1. Name of the Sqlite database created in the ETL step. 
      2. Name of the ML model pickle file to which the ML model is exported
@@ -70,8 +77,11 @@ That is definitely not possible with the current app version, but just to set a 
 - Start the Flask based web application 
 
   In folder APP start the python script 
+
   - Switch to folder APP
+
   - Execute *python run.py* 
+
     Caution: run.py needs no parameters. The script reads the database file and the pickle model file 
     with the given names: "../data/DB_disaster_msg.db" and "../model/ML_disaster_msg.pkl
     So the parameters for the ETL and ML steps should be exactly as specified above.
