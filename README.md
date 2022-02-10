@@ -52,19 +52,21 @@ That is definitely not possible with the current app version, but just to set a 
 - Start the ML process
   In folder MODEL start the python script TRAIN_CLASSIFIER.PY 
   -- Switch to folder MODEL
-  -- Execute "python train_classifier.py DB_disaster_Msg.db ML_disaster_Msg.pkl
+  -- Execute "python train_classifier.py DB_disaster_msg.db ML_disaster_msg.pkl
      Parameters:
      1. Name of the Sqlite database created in the ETL step. 
      2. Name of the ML model pickle file to which the ML model is exported
 
 - Start the Flask based web application 
   In folder APP start the python script 
-  - 
-There is one Jupyter Notebook which contains all the coding ("stov_survey.ipynb"). The data used (s.below) is copied locally in a folder called data.
-A more verbal description can be found in the following blog post.
+  - Switch to folder APP
+  - Execute "python run.py" 
+    Caution: run.py needs no parameters. The script reads the database file and the pickle model file 
+    with the given names: "../data/DB_disaster_msg.db" and "../model/ML_disaster_msg.pkl
+    So the parameters for the ETL and ML steps should be exactly as specified above.
 
 Licence, Acknowledgement
-The following data sources are used:
+The data is provided by company "Figure Eight - 
 
 Stackoverflow Survey 2017 (data link)
 World Bank Indicator Data Gdp 2017 (data link)
