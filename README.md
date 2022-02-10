@@ -17,15 +17,49 @@ There are 3 major parts in the project:
   A web app created with the Bootstrap web framework offers the possibility to make a proposal for a category for a new message text. 
   Some dashboards offer additional statistics about the used data.
 
-Project Motivation
-Despite of the lower return rate of the gender, the gender feature will be part of the study. The main focus lies on the gender and the country issues whether common assumptions about the developer world could be confirmed by the survey of a developer community. Besides of the Stackoverflow survey data, data about the gross domestic product (gdp) from the world bank for the countries and a file from which the continent of a country is extracted are used to enrich the data set.
+## Project Motivation
+The web app should allow employees in crisis management centres to categorize incoming messages about disastera quicker which then can be used to trigger the activation of specialized helper organizations. 
+That is definitely not possible with the current app version, but just to set a goal. 
 
-What is the influence of the gdp on the participation on the survey?
-Is there really a gender gap in the community and how big is the gap?
-How is the country and continent distribution of the community members?
-For the beginning only descriptive statistics techniques are used to exploit the data. It would be interesting to know how the development of the community over the years will happen regarding the addressed topics.
+## File Descriptions
+2 Files are given:
+- disaster_message.csv
+  Contains the text messages about a disaster with a given ID and a genre assignment
+- disaster_categories.csv 
+  Contains for every ID used in the disaster_messages.csv file an assignment to 36 categories used to classify the problem. 
+  The categories which are relevant for the message are labeled with 1 else with 0. 
+  
+## How is the Source Code organized
+- Folder Data
+  Contains the csv files and the python script process_data.py to load the data from the csv files and 
+  dump the prepared and cleaned data in a Sqlite database.
+- Folder Model
+  With the python script train_classifier.py the data is read out of the Sqlite database and used to train a NLP model. 
+  The model is then exported to a pickle file.
+- Folder App
+  The web application run.py is the Flask based web application which reads data from the Sqlite database for reporting and
+  the NLP model stored in the pickle file to make predictions about the category out of new disaster messages entered in the web app. 
+  
+## How to run everthing
+- Start the ETL proces 
+  In folder DATA start the python script PROCESS_DATA.PY to create the Sqlite database.
+  -- Switch to folder DATA 
+  -- Execute "python process_data.py disaster_messages.csv disaster_categories.csv DB_disaster_Msg.db"
+     Parameters: 
+     1. Name of the messages csv file
+     2. Name of the categories csv file
+     3. Name of the Sqllite database
+- Start the ML process
+  In folder MODEL start the python script TRAIN_CLASSIFIER.PY 
+  -- Switch to folder MODEL
+  -- Execute "python train_classifier.py DB_disaster_Msg.db ML_disaster_Msg.pkl
+     Parameters:
+     1. Name of the Sqlite database created in the ETL step. 
+     2. Name of the ML model pickle file to which the ML model is exported
 
-File Descriptions
+- Start the Flask based web application 
+  In folder APP start the python script 
+  - 
 There is one Jupyter Notebook which contains all the coding ("stov_survey.ipynb"). The data used (s.below) is copied locally in a folder called data.
 A more verbal description can be found in the following blog post.
 
