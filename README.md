@@ -48,7 +48,7 @@ That is definitely not possible with the current app version, but just to set a 
   The web application run.py is the Flask based web application which reads data from the Sqlite database for reporting and
   the NLP model stored in the pickle file to make predictions about the category out of new disaster messages entered in the web app. 
   
-## How to run everthing
+## How to run everything
 - Start the ETL process
 
   In folder DATA start the python script PROCESS_DATA.PY to create the Sqlite database.
