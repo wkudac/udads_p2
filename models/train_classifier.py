@@ -67,16 +67,16 @@ def build_model():
             AdaBoostClassifier(random_state=42),
             n_jobs=-1)),
     ])
-    #     parameters = {
-    #         'tfidf__use_idf': (True, False),
-    #         'clf__estimator__n_estimators': [50,100,200,400],
-    #         'clf__estimator__learning_rate': [0.5, 1, 2, 10, 20]
-    #     }
     parameters = {
-        'tfidf__use_idf': [False],
-        'clf__estimator__n_estimators': [50],
-        'clf__estimator__learning_rate': [0.5]
+        'tfidf__use_idf': [True, False],
+        'clf__estimator__n_estimators': [50,100,200,400],
+        'clf__estimator__learning_rate': [0.5, 1, 2, 10, 20]
     }
+    # parameters = {
+    #     'tfidf__use_idf': [False],
+    #     'clf__estimator__n_estimators': [50],
+    #     'clf__estimator__learning_rate': [0.5]
+    # }
     model = GridSearchCV(pipeline, param_grid=parameters,verbose=5)
     return model 
 
