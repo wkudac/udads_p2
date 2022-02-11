@@ -44,6 +44,8 @@ def index():
     # TODO: Below is an example - modify to extract data for your own visuals
     genre_counts = df.groupby('genre').count()['message']
     genre_names = list(genre_counts.index)
+    sample_counts = df[df.columns[4:]].sum().sort_values(ascending=False)
+    sample_names = list(sample_counts.index) 
     
     # create visuals
     # TODO: Below is an example - modify to create your own visuals
@@ -73,7 +75,26 @@ def index():
             'title': 'Genre'
         }
     }
-    plots = [plot_1, plot_2] 
+    plot_3 =  {
+        'data': [{
+            'x': sample_counts,
+            'y': sample_names,
+            'type': 'bar',
+            'orientation': 'h'
+        }], 
+        'layout': {
+            'title': 'Samples per Category in Modelbuilding',
+            'xaxis': {
+                'title': 'No. of Occurrences'                    
+            },
+            'yaxis': {
+                'title': 'Category'
+            },
+            'margin': dict(l=200, r=10, t=140, b=80),
+            'color': dict(ticklabelposition='outside right')  
+        }
+    }
+    plots = [plot_1, plot_2, plot_3] 
 
     # graphs.append(dict(data=graph_1, layout=layout_1))
 
