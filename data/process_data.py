@@ -82,7 +82,7 @@ def save_data(df, database_filename):
     save the data frame data to the database 
     """
     # DB Engine + DB DB_Disaster_Msg.db
-    db_engine_url = 'sqlite:///data/' + database_filename
+    db_engine_url = 'sqlite:///' + database_filename
     print('DB File: ', db_engine_url)
     db_engine = create_engine(db_engine_url)
     db_inspector = inspect(db_engine)

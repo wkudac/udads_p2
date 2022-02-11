@@ -83,20 +83,20 @@ def index():
             'orientation': 'h'
         }], 
         'layout': {
-            'title': 'Samples per Category in Modelbuilding',
+            'title': 'Samples Category in Modelbuilding',
             'xaxis': {
                 'title': 'No. of Occurrences'                    
             },
             'yaxis': {
                 'title': 'Category'
             },
-            'margin': dict(l=200, r=10, t=140, b=80),
-            'color': dict(ticklabelposition='outside right')  
+            'autosize': False,
+            'height': 800, 
+            'margin': dict(l=250, r=10, t=80, b=80),
+            'textfont': dict(family='Courier New', size=5)
         }
     }
     plots = [plot_1, plot_2, plot_3] 
-
-    # graphs.append(dict(data=graph_1, layout=layout_1))
 
     # encode plotly graphs in JSON
     ids = ["graph-{}".format(i) for i, _ in enumerate(plots)]
